@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -36,3 +37,24 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Files ###
+!**/*.jar
+out/
+!**/target/
+/.idea/artifacts/client_jar.xml
+/client/target/classes/org/aalpov/client_lab2/ClientApi.class
+/client/target/classes/org/aalpov/client_lab2/ConsoleUserApi$UserInputListener.class
+/client/target/classes/org/aalpov/client_lab2/ConsoleUserApi.class
+/server/target/classes/org/aalpov/server_lab2/CSServer$CSHandler$Logger.class
+/server/target/classes/org/aalpov/server_lab2/CSServer$CSHandler.class
+/server/target/classes/org/aalpov/server_lab2/CSServer.class
+/client/target/classes/org/aalpov/client_lab2/Main.class
+/server/target/classes/org/aalpov/server_lab2/Main.class
+/client/target/classes/META-INF/MANIFEST.MF
+/client/target/classes/org/aalpov/client_lab2/UserApi.class
+/client/1505998205/output.txt
+/server/src/main/java/META-INF/MANIFEST.MF
+/client/src/main/resources/META-INF/MANIFEST.MF
+/client/src/main/java/META-INF/MANIFEST.MF
+/client/input.txt
