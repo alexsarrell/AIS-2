@@ -1,5 +1,8 @@
 package org.aalpov.server_lab2;
 
+import sun.misc.Signal;
+import sun.misc.SignalHandler;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,26 @@ public class Main {
         var path = params.getOrDefault("--path", "C:\\Users\\alexs\\IdeaProjects\\lab2\\client");
 
         CSServer server = new CSServer(port, threadPoolSize, maxFileSize, path);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Shutdown hook triggered, closing resources...");
+            try {
+                server.stop();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }));
+
+        Signal.handle(new Signal("HUP"), new SignalHandler() {
+            @Override
+            public void handle(Signal signal) {
+                System.out.println("SIGHUP signal received!");
+                try {
+                    server.stop();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         server.start();
     }
 }

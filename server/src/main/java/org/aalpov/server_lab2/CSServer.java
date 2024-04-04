@@ -37,6 +37,7 @@ public class CSServer {
     }
 
     public void stop() throws IOException {
+        executor.shutdownNow();
         serverSocket.close();
     }
 
@@ -53,7 +54,7 @@ public class CSServer {
 
                 String path = getStorage(socket);
                 in = new DataInputStream(new BufferedInputStream(socket.getInputStream(), maxFileSize));
-                out = new FileOutputStream(path + "\\output.txt");
+                out = new FileOutputStream(path + "/output.txt");
                 clientInput = new DataOutputStream(socket.getOutputStream());
 
                 var res = in.readUTF();
@@ -73,8 +74,11 @@ public class CSServer {
         private String getStorage(Socket socket) {
             String client = ((InetSocketAddress)
                     socket.getRemoteSocketAddress()).getAddress().getHostAddress();
-            String dir = storagePath + "\\" + client.hashCode();
-            new File(dir).mkdir();
+            String dir = storagePath + "/" + client.hashCode();
+            dir = dir.replace('\\', '/');
+            var file = new File(dir);
+            file.mkdir();
+            file.setWritable(true);
             return dir;
         }
 

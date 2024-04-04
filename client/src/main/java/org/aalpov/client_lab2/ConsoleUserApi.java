@@ -2,6 +2,7 @@ package org.aalpov.client_lab2;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -49,6 +50,8 @@ public class ConsoleUserApi {
             updatePath();
 
             do {
+                var msg = MessageFormat.format("Type {0} to send the file, type {1} to change the file, type {2} to change the host, type {3} for exit", SEND_COMMAND, NEW_FILE_COMMAND, CHANGE_HOST_COMMAND, EXIT_COMMAND);
+                System.out.println(msg);
                 switch (scanner.nextLine()) {
                     case EXIT_COMMAND -> {
                         return;
@@ -77,7 +80,7 @@ public class ConsoleUserApi {
         private void updatePath() {
             String result;
             while (true) {
-                System.out.println("Enter absolute file path:");
+                System.out.println("Enter file path:");
                 result = scanner.nextLine();
                 if (new File(result).exists()) {
                     break;

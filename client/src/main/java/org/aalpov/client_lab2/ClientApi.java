@@ -5,7 +5,6 @@ import java.io.*;
 import java.nio.file.Files;
 
 public class ClientApi {
-
     private Socket clientSocket;
     private DataOutputStream out;
     private DataInputStream in;
