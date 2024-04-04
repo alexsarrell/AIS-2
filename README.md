@@ -7,8 +7,8 @@
 
 ## Состав
 Архив [сlient-server-tcp-cloud.zip](https://github.com/alexsarrell/AIS-2/files/14862060/lient-server-tcp-cloud.zip) содержит два JAR-файла:
-- client-<version>.jar - клиентское приложение для отправки файлов.
-- server-<version>.jar - серверное приложение, принимающее и сохраняющее файлы.
+- client-*version*.jar - клиентское приложение для отправки файлов.
+- server-*version*.jar - серверное приложение, принимающее и сохраняющее файлы.
 
 Также включен скрипт установки install.sh, который поможет настроить и запустить сервер как демон.
 
